@@ -9,11 +9,18 @@ $('#start').on('click',function() {
  // 		}
  // 	}
 	game.start();
+	$('body').css("background","url('assets/images/wallpaper1.jpg')");
+	$('#title').css("background-color","#f8e94e");
+	$('#subwrapper').css("background-color",'#f8e94e');
 })
 
 $(document).on('click','#end', function(){  //'#END' ?? LINE 81 - BUTTON TAG
 	game.done();
+	$('body').css("background", "url('assets/images/wallpaper1.jpg')").css("background-size",'120%');
+	$('#title').css("background-color",'#f8e94e');
+	$('#subwrapper').css("background-color",'#f8e94e');
 })
+
 
 // -------------------------------------------------------------------------------
 // BELOW QUESTIONS [ARRAY] INCLUDE WHOLE BUNCH OF {OBJECTS}.
@@ -27,9 +34,9 @@ var questions = [{
 	answers:["Football", "Ice Hockey", "Baseball", "Soccer"],
 	correctAnswer: "Baseball"
 }, {
-	question:"From where does the company Samsung originate?",
+	question:"From where does the company APPLE originate?",
 	answers:["Japan", "USA", "China", "Korea"],
-	correctAnswer: "Korea"
+	correctAnswer: "USA"
 }, {
 	question:"Which one is NOT of the three countries that make up Scandinavia?",
 	answers:["Turkey", "Denmark", "Norway", "Sweden"],
@@ -57,6 +64,9 @@ var questions = [{
 // BELOW {OBJECTS}
 
 var game = {
+
+	// background: url('../assets/images/wallpaper2.jpg');
+
 	correct: 0,
 	incorrect: 0,
 	counter: 20,
@@ -78,60 +88,61 @@ var game = {
 	 			$('#subwrapper').append("<input type='radio'  name='question-" + i + "'  value='" + questions[i].answers[j] +"' >" + questions[i].answers[j]);
 	 		}
 	 	}
-	 	$('#subwrapper').append('<br><button id="end">DONE</button>');
+	 	$('#subwrapper').append('<br><br><br><button id="end">DONE</button>') ;
 
 	},
 	done: function(){
-	$.each($('input[name="question-0]":checked'),function(){// NEED TO REVIEW HERE!!
-		if($(this).val()==questions[0].correctAnswer){ // NEED TO REVIEW HERE!!
+
+	$.each($('input[name="question-0"]:checked'),function(){ // NEED TO REVIEW HERE!!
+		if($(this).val()==questions[0].correctAnswer){ 
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-1]":checked'),function(){
+	$.each($('input[name="question-1"]:checked'),function(){
 		if($(this).val()==questions[1].correctAnswer){ 
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-2]":checked'),function(){
+	$.each($('input[name="question-2"]:checked'),function(){
 		if($(this).val()==questions[2].correctAnswer){ 
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-3]":checked'),function(){
+	$.each($('input[name="question-3"]:checked'),function(){
 		if($(this).val()==questions[3].correctAnswer){ 
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-4]":checked'),function(){
+	$.each($('input[name="question-4"]:checked'),function(){
 		if($(this).val()==questions[4].correctAnswer){ 
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-5]":checked'),function(){
+	$.each($('input[name="question-5"]:checked'),function(){
 		if($(this).val()==questions[5].correctAnswer){
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-6]":checked'),function(){
+	$.each($('input[name="question-6"]:checked'),function(){
 		if($(this).val()==questions[6].correctAnswer){
 			game.correct++;
 		} else {
 			game.incorrect++;
 		}
 	});
-	$.each($('input[name="question-7]":checked'),function(){
+	$.each($('input[name="question-7"]:checked'),function(){
 		if($(this).val()==questions[7].correctAnswer){
 			game.correct++;
 		} else {
@@ -146,12 +157,9 @@ var game = {
 		clearInterval(timer);
 		$('#subwrapper h2').remove();
 
-		$('#subwrapper').html("<h2>All done!</h2>");
+		$('#subwrapper').html("<h2>All done!</h2>").css('font-size','30px');
 		$('#subwrapper').append("<h3>Correct Answer: "+this.correct+"</h3>");
 		$('#subwrapper').append("<h3>Incorrect Answer: "+this.incorrect+"</h3>");		
 		$('#subwrapper').append("<h3>Unanswered: "+(questions.length-(this.incorrect+this.correct))+"</h3>");
 	}
 }
-
-
-console.log("Test");

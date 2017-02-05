@@ -1,0 +1,23 @@
+body {
+	background: url('../images/wallpaper2.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+
+	font-family: 'Barrio', cursive;
+	text-align: center;
+}
+ body {
+ 	background-color: #fff54e;
+ 	z-index: -99;
+ }
+
+h1 {
+	font-size: 70px;
+}
+
+button {
+	font-size: 1em;
+	padding: 10px;
+	color: white;
+	background-color: black;
+}
